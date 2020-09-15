@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#061948">
+    <meta name="msapplication-navbutton-color" content="#061948">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#061948">
+    <link rel="shortcut icon" href="public/images/fav-icon/TR-56x56.png">
+
+   <link rel="stylesheet" type="text/css" href="public/css/style.css">
+   <link href="css/style.css" type="text/css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="public/css/responsive.css">
+    <title>Registro de BL | Globaldesk</title>
+    <style type="text/css">
+        .esconder {
+            display: none;
+        }
+
+        .validar {
+            border-color: red !important;
+            background-color: #f8e9e9 !important;
+        }
+
+        .stlTitulo {
+            border-bottom: solid 2px #000f32;
+            padding-bottom: 5px;
+        }
+
+        .btnCustomNew {
+                    background: white !important;
+                    /*border: 1px solid rgba(0, 26, 87,1) !important;*/
+                    border: 1px solid #f44611 !important;
+                    color: #f44611 !important;
+                    font-weight: bold !important;
+                }
+
+                    .btnCustomNew:hover {
+                        background: #f44611 !important;
+                        color: white !important;
+                        /* box-shadow: 1px 1px 2px 2px #e7e7e7;*/
+                    }
+
+        .btnCustom {
+            background: transparent !important;
+            border: 1px solid rgba(0, 26, 87,1) !important;
+            color: rgba(0, 26, 87,1) !important;
+        }
+
+            .btnCustom:hover {
+                background: rgba(0, 26, 87,1) !important;
+                color: white !important;
+            }
+
+            .btnCustom:hover .spnFile {
+                color: white !important;
+            }
+
+            .addClass {
+                background: rgba(0, 26, 87,1) !important;
+                color: white !important;
+            }
+
+        .addClassBefore {
+            background: transparent !important;
+            border: 1px solid rgba(0, 26, 87,1) !important;
+            color: rgba(0, 26, 87,1) !important;
+        }
+
+        .imgUpload {
+            width: 100% ;
+            height: 40px;
+            display: block;
+            border: 1px solid lightgray;
+            padding: 4px;
+            text-align: left;
+            border-radius: 5px;
+            margin: -2px;
+        }
+    </style>
+    <style type="text/css">
+        .swal2-confirm, .swal2-cancel {
+            color: white !important;
+        }
+
+        .btn-primary {
+            background-color: #134D88 !important;
+            border-color: #000f32 !important;
+        }
+
+            .btn-primary:hover {
+                background-color: #061948 !important;
+                border-color: #134D88 !important;
+            }
+
+        .spnFile {
+            color: darkred !important;
+        }
+
+        .spnFile:hover {
+                color: white !important;
+            }
+
+            input {
+                outline: 0 !important;
+                border-width: 0 0 1px !important;
+                border-color: #ced4da !important;
+                border-radius: initial !important;
+            }
+
+            input:focus {
+                border-color: #000f32 !important;
+                outline: none !important;
+                border: 1px solid #061948 !important;
+                box-shadow: 0 0 10px #719ECE !important;
+            }
+
+        .container {
+            max-width: 960px;
+        }
+
+        .lh-condensed {
+            line-height: 1.25;
+        }
+
+        .invalid-feedback {
+        color: red !important;
+        }
+
+        .valid-feedback {
+                    color: darkgreen !important;
+                }
+
+                .font-bold {
+                    font-weight: bold;
+                }
+
+                .valida {
+                    border-color: #dc3545 !important;
+                    padding-right: calc(1.5em + .75rem) !important;
+                    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 5.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") !important;
+                    background-repeat: no-repeat !important;
+                    background-position: right calc(.375em + .1875rem) center !important;
+                    background-size: calc(.75em + .375rem) calc(.75em + .375rem) !important;
+                }
+
+                .validaCaja {
+                    border-color: #28a745 !important;
+                    padding-right: calc(1.5em + .75rem) !important;
+                    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") !important;
+                    background-repeat: no-repeat !important;
+                    background-position: right calc(.375em + .1875rem) center !important;
+                    background-size: calc(.75em + .375rem) calc(.75em + .375rem) !important;
+                }
+
+                .borderCustomize {
+                    border-color: #000f32 !important;
+                    border: 1px solid !important;
+                }
+
+                input[type=checkbox] {
+                    display: none;
+                }
+
+                    input[type=checkbox] + label {
+                        display: inline-block;
+                        position: relative;
+                        padding: 8px;
+                        background-color: rgba(0, 26, 87,1);
+                        border: 1px solid rgba(0, 26, 87,1);
+                        border-radius: 2px;
+                        width: 10px;
+                        height: 8px;
+                    }
+
+                    input[type=checkbox]:checked + label {
+                        background-color: rgba(0, 26, 87,1);
+                        color: #A4B7C6;
+                    }
+
+                        input[type=checkbox]:checked + label:after {
+                            position: absolute;
+                            left: 4px;
+                            top: -7px;
+                            color: #FFB200;
+                            font-weight: 900;
+                            content: '\2714';
+                            font-size: 18px;
+                        }
+        .input-group-text {
+        border: none !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+			<header class="header-one">
+                <div class="top-header">
+                    <div class="container clearfix">
+                        <div class="logo float-left"><a href="\"><img src="public/images/logo/logo6.png" alt=""></a></div>
+                        <div class="address-wrapper float-right">
+                            <ul>
+                                <li class="address">
+                                    <a href="https://goo.gl/maps/iddgJTgTobqvCUvf6" target="_blank">
+                                        <i class="icon flaticon-placeholder"></i>                        
+                                        <h6>Dirección:</h6>
+                                        <p>Av. Santa Rosa 425 La Perla, Callao - Perú</p>
+                                    </a>
+                                </li>
+                                <li class="address">
+                                    <a href="mailto:info@globaldesk.pe">
+                                        <i class="icon flaticon-multimedia"></i>
+                                        <h6>E-mail:</h6>
+                                        <p>info@globaldesk.pe</p>
+                                    </a>
+                                </li>
+                                <li class="quotes"><a href="contactenos">Contáctenos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-menu-wrapper">
+                    <div class="container">
+                        <div class="bg-wrapper clearfix">
+                            <div class="menu-wrapper float-left">
+                                <nav id="mega-menu-holder" class="clearfix">
+                                    <ul class="clearfix">
+                                        <li><a href="\">Inicio</a>
+                                        </li>
+
+                                        <li><a href="quienessomos">Quienes Somos</a>
+                                        </li>
+
+                                        <li><a href="#">Servicios</a>
+                                            <ul class="dropdown">
+                                                <li><a href="servicios">Servicios Generales</a></li>
+                                                <li><a href="#">Back Office</a></li>
+                                                <li><a href="#">Facturación y Pagos</a>
+                                                    <ul>
+                                                        <li><a href="facturacionypagos">Facturación y Pagos</a></li>
+                                                        <li><a href="formulariopago">Formulario Pago</a></li>
+                                                    </ul>
+                                                </li>    
+                                                <li><a href="rectificaciondemanifiesto">Rectificación de Manifiesto</a></li>
+                                                <li><a href="http://cargoofficeonlineqa.azurewebsites.net/" target="_blank">Direccionamientos</a></li> 
+
+                                            </ul>
+                                        </li>
+
+                                        <li><a href="clientes">Clientes</a>
+                                        </li>
+                                        
+                                        <li><a href="#">Agenciamiento</a>
+                                            <ul class="dropdown">
+                                                <li><a href="#">HYUNDAI MERCHANT MARINE</a>
+                                                    <ul>
+                                                        <li><a href="hmm-itinerarioplazos">Itinerario y Plazos</a></li>
+                                                        <li><a href="hmm-documentacion">Documentación</a></li>
+                                                        <li><a href="hmm-controlcontenedores">Control de contenedores</a></li>
+                                                        <li><a href="hmm-tarifarios">Tarifarios</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Wan Hai Lines</a>
+                                                    <ul>
+                                                        <li><a href="whl-itinerarioplazos">Itinerario y Plazos</a></li>
+                                                        <li><a href="whl-documentacion">Documentación</a></li>
+                                                        <li><a href="whl-controlcontenedores">Control de contenedores</a></li>
+                                                        <li><a href="whl-tarifarios">Tarifarios</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Mol ACE</a></li>
+                                                <li><a href="#">Stolt</a></li>
+                                            </ul>
+                                        </li>
+                                        
+                                        <li><a href="comunicados">Comunicados recientes</a>
+                                        </li>
+
+                                        
+
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            <div class="right-widget float-right">
+                                                <ul>
+                                                    <li >
+                                                        <ul>
+                                                            <li></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul> 
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+			<div class="theme-inner-banner section-spacing">
+				<div class="overlay">
+					<div class="container">
+						<h2>REGISTRO DE PAGO BL</h2>
+					</div> 
+				</div> 
+			</div> 	
+
+			<br>
+			<br>
+
+            <div class="our-case our-project section-spacing">
+            <form class="needs-validation" novalidate>
+            <div class="container ">
+                <h2 class="theme-title-one" id="all-in-one"><span class="theme-title-one">REGISTRO PARA PAGOS DE SERVICIOS</span></h2>
+                <br />
+                <div class="shadow p-3 mb-3 borderCustomize">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <h5 id="all-in-one"><span style="font-weight: bold;">COMPLETE ESTOS DATOS PARA BUSCAR</span></h5>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="form-group col-md-3">
+                            <label for="txtNroBl">Número de B/L</label><input class="form-control inpBuscar outlinenone " placeholder="Ingrese Numero de BL" required id="txtNroBl" type="text" maxlength="40" />
+                            <div id="busquedaBL" class=" invalid-feedback">
+                                Numero BL requerido
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                                <label for="ddlServicio">Servicio a pagar</label>
+                                <select class="form-control inpBuscar" required id="ddlServicio">
+                                    <option>-</option>
+                                </select>
+                                <div  id="busquedaServ" class="invalid-feedback">
+                                    Servicio a pagar requerido
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for=""></label>
+                                <button type="submit" id="btnBuscar" class="btn  btn-block btnCustom">Buscar</button>
+                            </div>
+                            <div class="form-group col-md-2 ">
+                                <label for=""></label>
+                                <button type="button" id="btnNuevo" class="btn  btn-block btnCustomNew">Nuevo</button>
+                            </div>
+                        </div>
+                </div>
+                <div class="shadow p-3 mb-3">
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="ddlLinea">Línea</label>
+                            <select class="form-control" disabled id="ddlLinea">
+                                <option>-</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtNave">Nave</label><input class="form-control" disabled id="txtNave" type="text" maxlength="50" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtViaje">Viaje</label><input class="form-control" disabled id="txtViaje" type="text" maxlength="20" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtCodeBank">CodeBank</label><input class="form-control" disabled id="txtCodeBank" type="text" maxlength="25" />
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                </div>
+                <div class="shadow p-3 mb-3">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <h5 id="all-in-one"><span style="font-weight: bold;">ADJUNTOS PARA COMPLETAR PAGO</span></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label>Fecha de Deposito</label>
+                            <input type="date" id="txtFechaDeposito"´style="width: 95% !important; display: inline-block;" class="form-control anchoInput">
+
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="ddlTipoDocumento">Tipo Documento</label>
+                            <div id="ddlTipoDocumento" class="wrapper-dropdown-3 form-control" required style="z-index:1" tabindex="1">
+
+                            </div>
+                            <div id="ids" class="invalid-feedback" style="width: 100%;">
+                                Tipo Documento  requerido.
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4" style="display: none;">
+                            <label for="txtTransfBancaria">Transf. Bancaria</label><input class="form-control" id="txtTransfBancaria" type="text" maxlength="30" />
+                        </div>
+                        <div class="form-groupx font-bold col-md-3">
+                            <label>Transferencia Bancaria</label>
+                            <a class="imgUpload btn btn-block btnCustom" id="lnkTranfBancaria" style="display: flex">
+                                <img id="imgTranfBancaria" alt="" src="" />
+                                <span class="spnFile" id="spnTranfBancaria" style="margin-left: 10px">Seleccionar archivo</span>
+                            </a>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="ddlMoneda">Moneda</label>
+                            <select class="form-control" required id="ddlMoneda">
+                                <option>-</option>
+                            </select>
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your Moneda  is required.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtImporte">Importe</label><input style="text-align: right;" placeholder="___.00" required class="form-control" id="txtImporte" type="text" maxlength="15" />
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your Importe  is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                        <div class="form-group font-bold col-md-3">
+                            <label>Mandato Electrónico</label>
+                            <a class="imgUpload btn btn-block btnCustom" id="lnkMandato" style="display: flex" required >
+                                <img id="imgMandato" alt="" required src="" />
+                                <span class="spnFile" required id="spnMandato" style="margin-left: 10px">Seleccionar archivo</span>
+                            </a>
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your Mandato Electrónico is required.
+                            </div>
+                        </div>
+                        <div class="form-group font-bold col-md-3">
+                            <label>Facturación Terceros</label>
+                            <a class="imgUpload btn btn-block btnCustom" id="lnkFacturacion" style="display: flex">
+                                <img id="imgFacturacion" alt="" src="" />
+                                <span class="spnFile" id="spnFacturacion" style="margin-left: 10px">Seleccionar archivo</span>
+                            </a>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtNroRuc">Número RUC</label><input class="form-control" required placeholder="Ingrese Numero de R.U.C" id="txtNroRuc" type="text" maxlength="11" />
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your RUC is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group font-bold col-md-4 " style="display: none;">
+                            <label for="txtMandato">Mandato Electrónico</label><input class="form-control" id="txtMandato" type="text" maxlength="50" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group font-bold col-md-4" style="display: none;">
+                            <label for="txtFacturacion">Facturación Terceros</label>
+                            <input class="form-control" id="txtFacturacion" type="text" maxlength="50" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="txtRazonSocial">Razón Social</label>
+                            <input type="text" class="form-control" id="txtRazonSocial" placeholder=" " maxlength="150" required="">
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your RazonSocial is required.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtDireccion">Dirección</label><input class="form-control" required id="txtDireccion" type="text" maxlength="90" />
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your Dirección is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow p-3 mb-3">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <h5 id="all-in-one"><span style="font-weight: bold;">INFORMACION COMPLEMENTARIA</span></h5>
+                        </div>
+                    </div>
+                    <!--<div class="borderCustomize">-->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <h6 id="all-in-one"><span style="font-weight: bold;">DATOS EMBARCADOR O CONSIGNATARIO</span></h6>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="form-group col-md-3">
+                                <label for="txtShipperRUC">RUC</label>
+                                <input class="form-control" id="txtShipperRUC" type="text" placeholder="Ingrese Datos Embarcador ó Consignatario" maxlength="50" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="txtRazonSocialShipper">Razón Social</label><input class="form-control" required id="txtRazonSocialShipper" type="text" maxlength="90" placeholder="Razon Social" />
+                                <div class="invalid-feedback" style="width: 100%;">
+                                    Razon Social is required.
+                                </div>
+                            </div>
+                        </div>
+                    <br />
+                    <!--</div>-->
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <h6 id="all-in-one">
+                                <span style="font-weight: bold;">
+                                    DATOS DEL PAGADOR  <span style="color: red;">(Datos de la persona o empresa que esta haciendo el pago, por cuenta de su principal)</span>
+                                </span>
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="txtNroRucTerceroPagador">RUC</label>
+                            <input class="form-control" id="txtNroRucTerceroPagador" required type="text" placeholder="Tercero Pagador RUC" maxlength="11" />
+                            <div class="invalid-feedback" style="width: 100%;">
+                                RUC is required.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtRazonSocialTerceroPagador">Razon Social</label><input class="form-control" required id="txtRazonSocialTerceroPagador" type="text" maxlength="90" placeholder="Tercero Razon Social" />
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Razon Social is required.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="chkdemo"></label>
+                            <p>
+                                <input type="checkbox" id="chkDeshabilitar" name="chkdemo"><label for="chkDeshabilitar"></label>
+                                <strong style="color: red;">Habilitar</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="txtEmailPagador">Email pagador</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">@</span>
+                                </div>
+                                <input type="text" class="form-control" id="txtEmailPagador" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Ingrese email" maxlength="50" required="">
+                                <div class="valid-feedback feedback-pos">
+                                    Looks good!
+                                </div>
+                                <div id="divEmailPagador" class="invalid-feedback feedback-pos" style="width: 100%;">
+                                    Please input valid email ID
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtEmailRespuesta">Email respuesta</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">@</span>
+                                </div>
+                                <input type="text" class="form-control" id="txtEmailRespuesta" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Ingrese email " maxlength="50" required="">
+                                <div class="valid-feedback feedback-pos">
+                                    Looks good!
+                                </div>
+                                <div id="divEmailRespuesta" class="invalid-feedback feedback-pos" style="width: 100%;">
+                                    Please input valid email ID
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label><a id="lnkNewCaptcha" href="#">Refrescar</a></label><input class="form-control" required id="txtCodeCaptcha" type="text" maxlength="6" />
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your Captcha is required.
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <img id="imgCaptcha" alt="espere" src="#" style="width: 180px; height: 70px; border: solid 1px lightgrey; padding: 4px; border-radius: 10px;" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-10"></div>
+                        <div class="form-group col-md-2">
+                            <button type="submit" id="btnGuardar" class="btn  btn-block btnCustom">Guardar</button>
+                        </div>
+                    </div>
+                    <input class="esconder" id="inpFileTranfBancaria" accept=".pdf" type="file" /><input class="esconder" accept=".pdf" id="inpFileMandato" type="file" />
+                    <input class="esconder" id="inpFileFacturacion" accept=".pdf" type="file" />
+                </div>
+                </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="js/jsFunciones.js"></script>
+    <script src="js/jsGlobales.js"></script>
+    <script>
+        window.XMLHttpRequest.prototype.awaitEfect = false;
+        var openXhr = window.XMLHttpRequest.prototype.open;
+        window.XMLHttpRequest.prototype.open = function (method, url, async, user, password, pAwaitEfect) {
+            this.awaitEfect = pAwaitEfect !== undefined && pAwaitEfect !== null ? pAwaitEfect : false;
+            if (navigator.msSaveOrOpenBlob) {
+                if (method.toUpperCase() === "GET") {
+                    var noCacheDate = new Date().getTime();
+                    if (url.indexOf("?") > -1)
+                        arguments[1] = url + "&buster=" + noCacheDate;
+                    else
+                        arguments[1] = url + "?buster=" + noCacheDate;
+                }
+            }
+
+            return openXhr.apply(this, [].slice.call(arguments));
+        };
+
+        var sendXhr = window.XMLHttpRequest.prototype.send;
+        window.XMLHttpRequest.prototype.send = function (data) {
+            if (this.onreadystatechange) this._onreadystatechange = this.onreadystatechange;
+
+            if (this.awaitEfect === true) {
+                ajax_icon_handling('load');
+            }
+
+            this.onreadystatechange = onReadyStateChangeReplacement;
+            return sendXhr.apply(this, arguments);
+        }
+
+        function onReadyStateChangeReplacement() {
+            if (this.awaitEfect === true) {
+                if (this.readyState === 4) {
+                    if (this.status === 200 || this.status === 201) {
+                        ajax_icon_handling(true);
+                    } else {
+                        ajax_icon_handling(true);
+                    }
+                }
+            }
+
+            if (this._onreadystatechange) {
+                return this._onreadystatechange.apply(this, arguments);
+            }
+        }
+
+        function ajax_icon_handling(type) {
+            switch (type) {
+                case 'load':
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'info',
+                        title: '<strong><u>Message</u></strong>',
+                        html:
+                            '<b>Por favor espere un momento</b> ' +
+                            '<a href="//sweetalert2.github.io"></a> ' +
+                            'Gracias!',
+                        showConfirmButton: false,
+                        allowOutsideClick: false
+
+                    });
+                    break;
+                case false:
+                    setTimeout(function () {
+                        $('#swal2-content').html('<div class="sa"><div class="sa-error"><div class="sa-error-x"><div class="sa-error-left"></div><div class="sa-error-right"></div></div><div class="sa-error-placeholder"></div><div class="sa-error-fix"></div></div></div><div><h4>An error has occurred; please contact web support for assistance.</h4></div><button class="confirm swal-close" style="display: inline-block; border-left-color: rgb(48, 133, 214); border-right-color: rgb(48, 133, 214);">OK</button>');
+                    }, 1000);
+                    $('.swal-close').on('click', function () { swal.closeModal(); });
+                    break;
+                case true:
+
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'success',
+                        title: '<strong><u>Message</u></strong>',
+                        html:
+                            '<b>Your work has been saved</b> ' +
+                            '<a href="//sweetalert2.github.io"></a> ' +
+                            'Gracias!',
+                        showConfirmButton: false,
+                        timer: 700,
+                        allowOutsideClick: false
+                    });
+                    break;
+            }
+        }
+    </script>
+    <script src="js/jsIndex.js"></script>
+    <script>
+        (function () {
+            'use strict'
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation')
+               // Loop over them and prevent submission
+               Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                       // debugger;
+                        if (form.checkValidity() === false) {
+                          
+                            document.getElementById("ddlTipoDocumento").classList.add("valida");
+                            if (document.getElementById("ddlTipoDocumento").innerHTML == "--Seleccione--") {
+                                document.getElementById("ids").style.display = 'block';
+                            }
+                            else {
+                                document.getElementById("ids").style.display = 'none';
+
+                            }
+                            
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            }, false)
+
+
+        }())
+    </script>
+			<footer class="theme-footer-one">
+                <div class="top-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-4 col-sm-6 about-widget">
+                                <h6 class="title">ACERCA DE NOSOTROS</h6>
+                                <p>En GLOBALDESK nos especializamos en brindar servicios profesionales y de tecnologías de información. Nuestro fin es dedicarnos a optimizar procesos y procedimientos en lo referido a la atención de clientes en ventanillas y soporte de información a través de contact centers.</p>
+                                <div class="queries"><i class="flaticon-phone-call"></i> Teléfono: <a href="tel:012099770">(+51 1) 209 9770</a></div>
+                            </div> <!-- /.about-widget -->
+                            <div class="col-xl-4 col-lg-3 col-sm-6 footer-recent-post">
+                                <h6 class="title">COMUNICADOS RECIENTES</h6>
+                                <ul>
+                                    <li class="clearfix">
+                                        <img src="public/images/blog/1.jpg" alt="" class="float-left">
+                                        <div class="post float-left">
+                                            <a href="hmm-itinerarioplazos">Plazo documentario Hyundai Merchant Marine CO., LTD. por servicio.</a>
+                                            <div class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i> Sep, 2019</div>
+                                        </div>
+                                    </li>
+                                    <li class="clearfix">
+                                        <img src="public/images/blog/1.jpg" alt="" class="float-left">
+                                        <div class="post float-left">
+                                            <a href="whl-itinerarioplazos">Plazo documentario Wan Hai Lines LTD por servicio.</a>
+                                            <div class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i> Sep, 2019</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div> <!-- /.footer-recent-post -->
+                            <div class="col-xl-2 col-lg-3 col-sm-6 footer-list">
+                                <h6 class="title">SERVICIOS</h6>
+                                <ul>
+                                    <li><a href="servicios">Pago de servicios</a></li>
+                                    <li><a href="servicios">Emisión de memos</a></li>
+                                    <li><a href="servicios">Consultas ONLINE</a></li>
+                                    <li><a href="servicios">Desgloses de HB/Ls para comunicados de Globaldesk</a></li>
+                                </ul>
+                            </div> <!-- /.footer-list -->
+                            <div class="col-xl-3 col-lg-3 col-sm-6 footer-list">
+                                <h6 class="title"> </h6>
+                                <ul>
+                                    <li><a href="servicios">Direccionamiento - Elección de depósito temporal</a></li>
+                                    <li><a href="servicios">Consultas sobre instrucciones de emisión de B/Ls</a></li>
+                                    <li><a href="http://www.callaoonline.com" target="_blank"><i>Precios por servicios locales</i></a></li>
+                                </ul>
+                            </div> <!-- /.footer-list -->
+                        </div> <!-- /.row -->
+                    </div> <!-- /.container -->
+                </div>
+                <div class="bottom-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-12"><p>&copy; Copyrights 2018 - ÁREA DE DESARROLLO - Todos los derechos reservados.</p></div>
+                            <div class="col-md-6 col-12">
+                                <ul>
+                                    <li><a href="/">Inicio</a></li>
+                                <!--  <li><a href="quienessomos">Quienes Somos</a></li> -->
+                                    <li><a href="servicios">Servicios</a></li>
+                                    <li><a href="contactenos">Contáctenos</a></li>
+                                    <li><a href="http://cargoofficeonlineqa.azurewebsites.net/" target="_blank">Globaldesk Online</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <button class="scroll-top tran3s">
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </button>
+
+		    <script src="public/vendor/jquery.2.2.3.min.js"></script>
+            <script src="public/vendor/popper.js/popper.min.js"></script>
+            <script src="public/vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src='public/vendor/Camera-master/scripts/jquery.mobile.customized.min.js'></script>
+            <script src='public/vendor/Camera-master/scripts/jquery.easing.1.3.js'></script>
+            <script src='public/vendor/Camera-master/scripts/camera.min.js'></script>
+            <script src="public/vendor/menu/src/js/jquery.slimmenu.js"></script>
+            <script src="public/vendor/WOW-master/dist/wow.min.js"></script>
+            <script src="public/vendor/owl-carousel/owl.carousel.min.js"></script>
+            <script src="public/vendor/jquery.appear.js"></script>
+            <script src="public/vendor/jquery.countTo.js"></script>
+            <script src="public/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+            <script src="public/js/theme.js"></script>
+
+		</div>
+	</body>
+</html>
